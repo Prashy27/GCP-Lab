@@ -3,6 +3,7 @@ pipeline {
     environment {
         SVC_ACCOUNT_KEY = credentials('terraform-gcp-auth')
     }
+
     stages{
         stage('Checkout'){
             steps{
@@ -11,5 +12,13 @@ pipeline {
                 sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./creds/serviceaccount.json'
             }
         }
+
+        stage('TF Plan'){
+            steps{
+                sh 'terraform init'
+                sh 'terraform plan -out=tfplan'
+            }
+        }
+      }
     }
 }
