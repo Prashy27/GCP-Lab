@@ -1,5 +1,5 @@
 provider "google" {
-    credentials = "${file("mykubecluster-23dc55a8c13a.json")}"
+    credentials = "${file("./creds/serviceaccount.json")}"
     project = "mykubecluster-265413"
     region = "us-east1"
 }
