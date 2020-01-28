@@ -1,7 +1,9 @@
 env.SVC_ACCOUNT_KEY = credentials('terraform-gcp-auth')
 pipeline {
     agent {label 'master'}
-
+    environment {
+        SVC_ACCOUNT_KEY = credentials('terraform-auth')
+    }
     stages{
         stage('Checkout'){
             steps{
