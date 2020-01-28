@@ -1,5 +1,8 @@
-node {
-    withEnv(['SVC_ACCOUNT_KEY = credentials('terraform-gcp-auth')']){
+env.SVC_ACCOUNT_KEY = credentials('terraform-gcp-auth')
+pipeline {
+    agent {label 'master'}
+
+    stages{
         stage('Checkout'){
             steps{
                 checkout scm
