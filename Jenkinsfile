@@ -19,6 +19,5 @@ pipeline {
                 sh 'terraform plan -out=tfplan'
             }
         }
-      }
     }
 }
