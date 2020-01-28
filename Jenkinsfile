@@ -30,7 +30,7 @@ pipeline {
 
         stage('TF Apply') {
             steps {
-                sh 'terraform apply -input=false tfplan'
+                sh '/app/terraform_0.12/terraform apply -input=false tfplan'
             }
         }
     }
