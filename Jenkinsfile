@@ -35,10 +35,10 @@ pipeline {
         }
 
         stage('Get IP addresses'){
-            script{
-                def KUBEMASTERIP = sh 'terraform output kubemaster_public_ip'
-            }
             steps{
+                script{
+                    def KUBEMASTERIP = sh 'terraform output kubemaster_public_ip'
+                }
                 echo "${env.KUBEMASTERIP}"
             }
         }
