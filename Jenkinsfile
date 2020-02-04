@@ -33,5 +33,15 @@ pipeline {
                 sh '/app/terraform_0.12/terraform apply -input=false tfplan'
             }
         }
+        
+        environment{
+            KUBEMASTERIP = "${sh(script:'terraform output kubemaster_public_ip')}"
+        }
+        
+        stage('Get IP addresses'){
+            steps{
+                echo "${env.KUBEMASTERIP}"
+            }
+        }
     }
 }
