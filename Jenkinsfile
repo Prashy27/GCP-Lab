@@ -15,8 +15,8 @@ pipeline {
 
         stage('TF Plan'){
             steps{
-                sh 'terraform init'
-                sh 'terraform plan -out=tfplan'
+                sh '/app/terraform_0.12/terraform init'
+                sh '/app/terraform_0.12/terraform plan -out=tfplan'
             }
         }
         
@@ -30,14 +30,14 @@ pipeline {
 
         stage('TF Apply') {
             steps {
-                sh 'terraform apply -input=false myplan'
+                sh '/app/terraform_0.12/terraform apply -input=false myplan'
             }
         }
 
         stage('Get IP addresses'){
             steps{
                 script{
-                    def KUBEMASTERIP = sh 'terraform output kubemaster_public_ip'
+                    def KUBEMASTERIP = sh '/app/terraform_0.12/terraform output kubemaster_public_ip'
                 }
                 echo "${env.KUBEMASTERIP}"
             }
