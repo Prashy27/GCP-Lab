@@ -7,7 +7,7 @@ data "template_file" "inventory_gcp"{
                   "google_compute_subnetwork.kube_public_subnet"
                 ]
     
-    vars {
+    vars = {
         master_if = "${google_compute_instance.kubemaster.network_interface.*.access_config}"
         master_ip = "${master_if.*.nat_ip}"
         worker_if = "${google_compute_instance.kubenode02.network_interface.*.access_config}"
