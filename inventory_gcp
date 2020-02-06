@@ -1,0 +1,9 @@
+[all:children]
+kube-master
+kube-workers
+
+[kube-master]
+ansible_ssh_hostname=${master_ip}
+
+[kube-workers]
+ansible_ssh_hostname=${worker_ip}
