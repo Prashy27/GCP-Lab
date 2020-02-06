@@ -16,7 +16,7 @@ data "template_file" "inventory_gcp"{
 }
 
 resource "null_resource" "inventory_gcp" {
-    triggers {
+    triggers = {
         template_rendered = "data.template_file.inventory_gcp.rendered"
     }
     provisioner "local-exec"{
