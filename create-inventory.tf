@@ -8,10 +8,10 @@ data "template_file" "inventory_gcp"{
                 ]
     
     vars = {
-        master_if = "${google_compute_instance.kubemaster.network_interface.*.access_config}"
-        master_ip = "${master_if.*.nat_ip}"
-        worker_if = "${google_compute_instance.kubenode02.network_interface.*.access_config}"
-        worker_ip = "${worker_if.*.nat_ip}"
+        master_if = "${google_compute_instance.kubemaster.network_interface.*.access_config[0].nat_ip}"
+        #master_ip = "${master_if.*.nat_ip}"
+        worker_if = "${google_compute_instance.kubenode02.network_interface.*.access_config[0].nat_ip}"
+        #worker_ip = "${worker_if.*.nat_ip}"
     }
 }
 
